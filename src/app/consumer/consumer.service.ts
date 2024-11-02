@@ -14,7 +14,7 @@ export class ConsumerService {
   }
 
   // Method to provide default values for the Consumer class
-  private getDefaultConsumer(): Consumer {
+  getDefaultConsumer(): Consumer {
     return {
       id: '',
       identification_type: '',

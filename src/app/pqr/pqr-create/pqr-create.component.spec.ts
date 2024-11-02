@@ -20,6 +20,7 @@ describe('PqrCreateComponent', () => {
   beforeEach(waitForAsync(() => {
     consumerService = jasmine.createSpyObj('ConsumerService', [
       'getActualConsumerDetails',
+      'getDefaultConsumer',
     ]);
     pqrService = jasmine.createSpyObj('PQRService', ['createPQR']);
     toastrService = jasmine.createSpyObj('ToastrService', ['success', 'error']);

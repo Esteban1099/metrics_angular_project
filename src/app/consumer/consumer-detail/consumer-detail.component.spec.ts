@@ -14,6 +14,7 @@ describe('ConsumerDetailComponent', () => {
     // Create spies for the services
     consumerService = jasmine.createSpyObj('ConsumerService', [
       'getActualConsumerDetails',
+      'getDefaultConsumer',
     ]);
     router = jasmine.createSpyObj('Router', ['navigate']);
 
