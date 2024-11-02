@@ -27,22 +27,7 @@ export class PqrCreateComponent {
     private pqrService: PQRService,
     private toastr: ToastrService
   ) {
-    this.consumerDetails = this.getDefaultConsumer(); // Initialize with default values
-  }
-
-  // Method to provide default values for the Consumer class
-  private getDefaultConsumer(): Consumer {
-    return {
-      id: '',
-      identification_type: '',
-      identification_number: '',
-      name: '',
-      email: '',
-      contact_number: '',
-      address: '',
-      companies: [],
-      pccs: [],
-    };
+    this.consumerDetails = this.consumerService.getDefaultConsumer(); // Initialize with default values
   }
 
   ngOnInit() {
