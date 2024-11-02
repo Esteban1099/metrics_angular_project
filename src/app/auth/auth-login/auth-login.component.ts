@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-auth-login',
   templateUrl: './auth-login.component.html',
-  styleUrls: ['./auth-login.component.css'],
 })
 export class AuthLoginComponent implements OnInit {
   role: string | null = '';
