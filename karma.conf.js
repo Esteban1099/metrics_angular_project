@@ -1,27 +1,30 @@
 module.exports = function (config) {
   config.set({
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
-    browsers: ['ChromeHeadless'], // Usar Chrome en modo headless
+    frameworks: ["jasmine", "@angular-devkit/build-angular"],
+    browsers: ["ChromeHeadless"], // Use Chrome in headless mode
     plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require("karma-jasmine"),
+      require("karma-chrome-launcher"),
+      require("karma-coverage"),
+      require("@angular-devkit/build-angular/plugins/karma"),
     ],
-    reporters: ['progress', 'coverage'],
+    reporters: ["coverage"],
     coverageReporter: {
-      type: 'html',
-      dir: 'coverage/'
+      dir: require("path").join(__dirname, "./coverage"),
+      reporters: [
+        { type: "lcovonly", subdir: "." }, // This should generate lcov.info directly in ./coverage
+        { type: "text-summary" },
+      ],
     },
-    singleRun: true, // Finaliza el proceso después de ejecutar las pruebas
-    autoWatch: false, // No sigue observando cambios
+    singleRun: true, // End process after running tests
+    autoWatch: false, // Do not watch for file changes
     customLaunchers: {
       ChromeHeadlessCI: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox'], // Necesario para algunos entornos CI
-        singleRun: true, // Para asegurarse de que Karma no se mantenga en ejecución después de las pruebas
-        restartOnFileChange: false, // Para evitar reinicios innecesarios
-      }
-    }
+        base: "ChromeHeadless",
+        flags: ["--no-sandbox"], // Needed for some CI environments
+        singleRun: true,
+        restartOnFileChange: false,
+      },
+    },
   });
 };
