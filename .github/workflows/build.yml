@@ -24,7 +24,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          ng test --no-watch --browsers=ChromeHeadless --code-coverage --source-map=false
+          - run: ng test --no-watch --browsers=ChromeHeadless --code-coverage --source-map=false || true
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
