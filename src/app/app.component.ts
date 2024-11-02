@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
   title = 'abcall-web';
@@ -12,7 +11,7 @@ export class AppComponent implements OnInit {
   shouldShowLogOut = false;
   shouldShowBackOption = true;
 
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   ngOnInit(): void {
     // Listen to route changes
