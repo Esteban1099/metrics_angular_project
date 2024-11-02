@@ -7,13 +7,20 @@ import { Observable, map, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  defaultUser: User = {
+    email: 'agent@gmail.com',
+    password: 'p@ssw0rd',
+    role: 'AGENT',
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vY2sgVXNlciIsImlhdCI6MTUxNjIzOTAyMn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+  };
+
   constructor(private http: HttpClient) {}
 
   login(user: User): Observable<string> {
     const headers = { 'Content-Type': 'application/json' };
     if (user.token === undefined || user.token === null || user.token === '') {
-      user.token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vY2sgVXNlciIsImlhdCI6MTUxNjIzOTAyMn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+      user = this.defaultUser;
     }
     if (user.role === 'CLIENT') {
       return this.http
